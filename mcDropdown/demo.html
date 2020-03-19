@@ -1,0 +1,386 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="renderer" content="webkit">
+	<title>Dropdown</title>
+	<link rel="stylesheet" href="css/doc.css">
+    <link rel="stylesheet" href="https://www.layuicdn.com/layui-v2.5.5/css/layui.css">
+    <script src="https://www.layuicdn.com/layui-v2.5.5/layui.js"></script>
+    <style>
+a {color:#0e83e5;}   
+.mc-dropdown {display:inline-block;}
+.layui-btn>i {font-size: 12px!important;margin-left: 5px;}
+	</style>
+</head>
+<body>
+<div class="doc-layout">
+	<div class="doc-side">
+		<h1>Dropdown</h1>
+		<h2>文档目录</h2>
+		<ul>
+			<li><a href="#use" title="使用方法">使用方法</a></li>
+			<li><a href="#demo" title="演示">演示</a></li>
+			<li><a href="#param" title="可配置参数">可配置参数</a></li>
+			<li><a href="#custom" title="多种用法">多种用法</a></li>
+		</ul>
+		<h2>AUTHOR</h2>
+		<ul>
+			<li><a href="" target="_blank">@cm</a></li>
+		</ul>
+	</div>
+	<div class="doc-content" id="doc-content">
+		<div class="layui-main">
+			<h1 class="doc-h1">Dropdown</h1>
+			<div class="layui-text">
+				Dropdown 下拉组件
+			</div>
+
+			<fieldset class="layui-elem-field layui-field-title" id="use"><legend>使用方法</legend></fieldset>
+			<pre class="layui-code" lay-encode="true">
+				// layui 配置插件目录
+				layui.config({
+				   base: 'js/lay-module/',
+				}).extend({
+				   mcDropdown:'mcDropdown/mcDropdown',
+				})
+
+				调用
+				layui.use(['mcDropdown'],function(){
+				    var mcDropdown = layui.mcDropdown;
+				    mcDropdown.render();
+				})
+
+				DOM结构
+				<div class="mc-dropdown">
+				  <a href="javascript:void(0)">button</a>
+				  <div class="mc-dropdown-menu" style="display:none;">
+				    <ul class="mc-dropdown-menu-list">
+				      <li><a href="javascript:;">item1</a></li>
+				      ……
+				    </ul>
+				  </div>	
+				</div>			
+			</pre>
+
+			<br><br>
+
+
+
+			<fieldset class="layui-elem-field layui-field-title" id="demo"><legend>触发方式 hover</legend></fieldset>
+
+			<div style="margin-bottom: 50px;">
+
+				<div class="mc-dropdown" type="hover">
+					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-normal">button left<i class="layui-icon layui-icon-down"></i></a>
+					<div class="mc-dropdown-menu" style="display:none;">
+						<ul class="mc-dropdown-menu-list">
+							<li><a href="javascript:;">Basic Elements</a></li>
+							<li><a href="javascript:;">Form Advanced</a></li>
+							<li><a href="javascript:;">Wizard</a></li>
+						</ul>
+					</div>	
+				</div>
+
+				<div class="mc-dropdown" type="hover" placement="center" style="margin-left:50px;">
+					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-normal">center<i class="layui-icon layui-icon-down"></i></a>
+					<div class="mc-dropdown-menu" style="display:none;">
+						<ul class="mc-dropdown-menu-list">
+							<li><a href="javascript:;">Basic Elements</a></li>
+							<li><a href="javascript:;">Form Advanced</a></li>
+							<li><a href="javascript:;">Wizard</a></li>
+						</ul>
+					</div>	
+				</div>
+
+				<div class="mc-dropdown" type="hover" placement="right" style="margin-left:50px;">
+					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-normal">hover right<i class="layui-icon layui-icon-down"></i></a>
+					<div class="mc-dropdown-menu" style="display:none;">
+						<ul class="mc-dropdown-menu-list">
+							<li><a href="javascript:;">Basic Elements</a></li>
+							<li>
+								<a href="javascript:;" class="mc-dropdown-menu-title">Form Advanced</a>
+								<ul>
+									<li><a href="avascript:;">Mac</a></li>
+									<li><a href="avascript:;">iPad</a></li>
+								</ul>
+							</li>
+							<li><a href="javascript:;">Wizard</a></li>
+						</ul>
+					</div>	
+				</div>
+
+				<div class="mc-dropdown" type="hover" placement="topCenter" style="margin-left:50px;">
+					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-normal">hover button top center<i class="layui-icon layui-icon-down"></i></a>
+					<div class="mc-dropdown-menu" style="display:none;">
+						<ul class="mc-dropdown-menu-list">
+							<li><a href="javascript:;">Basic Elements</a></li>
+							<li><a href="javascript:;">Form Advanced</a></li>
+							<li><a href="javascript:;">Wizard</a></li>
+						</ul>
+					</div>	
+				</div>
+
+			</div>
+
+			<fieldset class="layui-elem-field layui-field-title"><legend>触发方式 Click</legend></fieldset>
+
+			<div class="item" style="margin-bottom: 50px;">
+
+				<div class="mc-dropdown" type="click">
+					<a href="javascript:void(0)" class="layui-btn layui-btn-sm">button click right<i class="layui-icon layui-icon-down"></i></a>
+					<div class="mc-dropdown-menu" style="display:none;">
+						<ul class="mc-dropdown-menu-list">
+							<li><a href="javascript:;">Basic Elements</a></li>
+							<li><a href="javascript:;">Form Advanced</a></li>
+							<li><a href="javascript:;">Wizard</a></li>
+						</ul>
+					</div>	
+				</div>
+
+
+				<div class="mc-dropdown" type="click" placement="center" style="margin-left:50px;">
+					<a href="javascript:void(0)" class="layui-btn layui-btn-sm">button click center<i class="layui-icon layui-icon-down"></i></a>
+					<div class="mc-dropdown-menu" style="display:none;">
+						<ul class="mc-dropdown-menu-list">
+							<li><a href="javascript:;">Basic Elements</a></li>
+							<li><a href="javascript:;">Form Advanced</a></li>
+							<li><a href="javascript:;">Wizard</a></li>
+						</ul>
+					</div>	
+				</div>
+
+
+				<div class="mc-dropdown" type="click" placement="topLeft" style="margin-left:50px;">
+					<a href="javascript:void(0)" class="layui-btn layui-btn-sm">button click top left<i class="layui-icon layui-icon-down"></i></a>
+					<div class="mc-dropdown-menu" style="display:none;">
+						<ul class="mc-dropdown-menu-list">
+							<li><a href="javascript:;">Basic Elements</a></li>
+							<li><a href="javascript:;">Form Advanced</a></li>
+							<li><a href="javascript:;">Wizard</a></li>
+						</ul>
+					</div>	
+				</div>
+
+
+				<div class="mc-dropdown" type="click" placement="topCenter" style="margin-left:50px;">
+					<a href="javascript:void(0)" class="layui-btn layui-btn-sm">top <i class="layui-icon layui-icon-down"></i></a>
+					<div class="mc-dropdown-menu" style="display:none;">
+						<ul class="mc-dropdown-menu-list">
+							<li><a href="javascript:;">Basic Elements</a></li>
+							<li><a href="javascript:;">Form Advanced</a></li>
+							<li><a href="javascript:;">Wizard</a></li>
+							<li>
+								<a href="javascript:;" class="mc-dropdown-menu-title">Shop and Learn</a>
+								<ul>
+									<li><a href="avascript:;">Mac</a></li>
+									<li><a href="avascript:;">iPad</a></li>
+									<li><a href="avascript:;">iPhone</a></li>
+									<li><a href="avascript:;">Watch</a></li>
+									<li><a href="avascript:;">Music</a></li>
+									<li><a href="avascript:;">AirPods</a></li>
+									<li><a href="avascript:;">HomePod</a></li>
+									<li><a href="avascript:;">iPod touch</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>	
+				</div>
+			</div>
+
+			<fieldset class="layui-elem-field layui-field-title" id="param"><legend>可配置参数</legend></fieldset>
+			<pre class="layui-code" lay-encode="true">
+			mcDropdown.render({
+			    anim:false,        //动画效果：param: false|2，关闭|效果2
+			    link:{             //自定义hover风格
+			        bg:'#188ae2',
+			        color:'#fff'
+			    },
+			    zIndex:1000,       //自定义层级，默认200
+			})
+			</pre>
+			<br><br>
+
+			<fieldset class="layui-elem-field layui-field-title"><legend>弹出位置</legend></fieldset>
+			<div>
+				<div class="mc-dropdown" type="hover">
+					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-primary">button left<i class="layui-icon layui-icon-down"></i></a>
+					<div class="mc-dropdown-menu" style="display:none;">
+						<ul class="mc-dropdown-menu-list">
+							<li><a href="javascript:;">Basic Elements</a></li>
+							<li><a href="javascript:;">Form Advanced</a></li>
+							<li><a href="javascript:;">Wizard</a></li>
+						</ul>
+					</div>	
+				</div>
+				<div class="mc-dropdown" type="hover" placement="right">
+					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-primary">button right<i class="layui-icon layui-icon-down"></i></a>
+					<div class="mc-dropdown-menu" style="display:none;">
+						<ul class="mc-dropdown-menu-list">
+							<li><a href="javascript:;">Basic Elements</a></li>
+							<li><a href="javascript:;">Form Advanced</a></li>
+							<li><a href="javascript:;">Wizard</a></li>
+						</ul>
+					</div>	
+				</div>
+				<div class="mc-dropdown" type="hover" placement="center">
+					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-primary">button center demo<i class="layui-icon layui-icon-down"></i></a>
+					<div class="mc-dropdown-menu" style="display:none;">
+						<ul class="mc-dropdown-menu-list">
+							<li><a href="javascript:;">Basic Elements</a></li>
+							<li><a href="javascript:;">Form Advanced</a></li>
+							<li><a href="javascript:;">Wizard</a></li>
+						</ul>
+					</div>	
+				</div>
+				<div class="mc-dropdown" type="hover" placement="topLeft">
+					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-primary">button top left<i class="layui-icon layui-icon-down"></i></a>
+					<div class="mc-dropdown-menu" style="display:none;">
+						<ul class="mc-dropdown-menu-list">
+							<li><a href="javascript:;">Basic Elements</a></li>
+							<li><a href="javascript:;">Form Advanced</a></li>
+							<li><a href="javascript:;">Wizard</a></li>
+						</ul>
+					</div>	
+				</div>
+
+				<div class="mc-dropdown" type="hover" placement="topCenter">
+					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-primary">button top center<i class="layui-icon layui-icon-down"></i></a>
+					<div class="mc-dropdown-menu" style="display:none;">
+						<ul class="mc-dropdown-menu-list">
+							<li><a href="javascript:;">Basic Elements</a></li>
+							<li><a href="javascript:;">Form Advanced</a></li>
+							<li><a href="javascript:;">Wizard</a></li>
+						</ul>
+					</div>	
+				</div>
+
+				<div class="mc-dropdown" type="hover" placement="topRight">
+					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-primary">button top right<i class="layui-icon layui-icon-down"></i></a>
+					<div class="mc-dropdown-menu" style="display:none;">
+						<ul class="mc-dropdown-menu-list">
+							<li><a href="javascript:;">Basic Elements</a></li>
+							<li><a href="javascript:;">Form Advanced</a></li>
+							<li><a href="javascript:;">Wizard</a></li>
+						</ul>
+					</div>	
+				</div>
+			</div>			
+			<br>
+			<div class="layui-text">
+				<blockquote class="layui-elem-quote">
+				弹出位置<br>
+				placement=left | center | right  | topLeft  |  topCenter  |  topRight  <br>
+				<span class="layui-badge">示例：&lt;div class="mc-dropdown" type="hover" placement="topRight"&gt;</span>
+			</blockquote>
+			</div>
+			<br><br>
+			<fieldset class="layui-elem-field layui-field-title" id="custom"><legend>多种用法</legend></fieldset>
+
+					<div>
+						<div class="mc-dropdown" type="hover" placement="topLeft">
+							<a href="javascript:void(0)" class="layui-btn layui-btn-sm">二级菜单 hover me</a>
+							<div class="mc-dropdown-menu"style="display:none">
+								<ul class="mc-dropdown-menu-list">
+									<li>
+										<a href="javascript:;" class="mc-dropdown-menu-title">Shop and Learn</a>
+										<ul>
+											<li><a href="avascript:;">Mac</a></li>
+											<li><a href="avascript:;">iPad</a></li>
+											<li><a href="avascript:;">iPhone</a></li>
+											<li><a href="avascript:;">Watch</a></li>
+											<li><a href="avascript:;">Music</a></li>
+											<li><a href="avascript:;">AirPods</a></li>
+											<li><a href="avascript:;">HomePod</a></li>
+											<li><a href="avascript:;">iPod touch</a></li>
+										</ul>
+									</li>
+									<li>
+										<a href="javascript:;" class="mc-dropdown-disabled" disabled>禁止了某个菜单</a>
+									</li>
+									<li><a href="javascript:;">Apple Store</a></li>
+									<li>
+										<a href="javascript:;" class="mc-dropdown-disabled mc-dropdown-menu-title">点击不会收起，使用任何结构</a>
+										<ul class="mc-dropdown-disabled">
+											<li style="padding:15px;color:#a5acb9;line-height: 1.5">默认点击都会收起弹层，想不要收起，<Br>就要在结构上添加class“mc-dropdown-disabled”</li>
+										</ul>
+									</li>
+								</ul>
+							</div>	
+						</div>
+
+						<div class="mc-dropdown" type="hover" style="margin-left:50px;">
+							<a href="javascript:;" class="layui-btn layui-btn-sm layui-btn-normal">自定义内容</a>
+							<div class="mc-dropdown-menu" style="display: none;">
+								<div class="layui-tab layui-tab-brief mc-dropdown-disabled" lay-filter="docDemoTabBrief">
+								  <ul class="layui-tab-title">
+								    <li class="layui-this">网站设置</li>
+								    <li>用户管理</li>
+								    <li>权限分配</li>
+								  </ul>
+								  <div class="layui-tab-content">
+								  	<div class="layui-tab-item layui-show">1</div>
+								  	<div class="layui-tab-item">2</div>
+								  	<div class="layui-tab-item">3</div>
+								  </div>
+								</div> 
+							</div>
+
+						</div>
+					</div><br>
+					<div class="layui-text"></div>
+					<div class="layui-text">
+						1、仅支持到二级菜单<br>
+						2、下拉层中可以放任何结构<br>
+						3、禁止某个菜单的点击事件，阻止收起，<Br>
+						<blockquote class="layui-elem-quote">
+							&lt;a href="javascript:;" class="<span class="layui-badge">mc-dropdown-disabled</span>" <span class="layui-badge">disabled</span>&gt;<Br>
+							<span class="layui-badge layui-bg-black">mc-dropdown-disabled</span>  只禁止收起事件的发生<Br>
+							<span class="layui-badge layui-bg-black">disabled</span>  禁止变灰
+						</blockquote>
+					</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+				
+		</div>
+	</div>
+</div>
+
+<script>
+
+// layui 配置
+layui.config({
+	base: 'js/lay-module/', 		//当前js目录
+}).extend({
+	mcDropdown:'mcDropdown/mcDropdown',
+})
+
+layui.use(['jquery','code','mcDropdown','element'],function(){
+	var $ = layui.jquery,
+		mcDropdown = layui.mcDropdown,
+		element = layui.element;
+
+	layui.code({
+		encode: true
+		// ,skin: 'notepad'
+	});
+	mcDropdown.render();
+	// mcDropdown.render({
+	// 	anim:2,	//动画类型 params:1/2/false,默认1
+	// 	link:{
+	// 		bg:'#188ae2',
+	// 		color:'#fff'
+	// 	},
+	// })
+})
+</script>
+
+</body>
+</html>
