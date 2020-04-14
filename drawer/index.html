@@ -1,0 +1,409 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="renderer" content="webkit" />
+	<title>fcDrawer 抽屉</title>
+	<link rel="stylesheet" href="css/doc.css">
+    <link rel="stylesheet" href="https://www.layuicdn.com/layui/css/layui.css">
+    <script src="https://www.layuicdn.com/layui/layui.js"></script>
+    <style>
+    	html {height: 100%;}
+		a {color:#0e83e5;}
+	</style>
+</head>
+<body>
+<div class="doc-layout">
+	<div class="doc-side">
+		<h1>Drawer</h1>
+		<h2>文档目录</h2>
+		<ul>
+			<li><a href="#use" title="使用方法">使用方法</a></li>
+			<li><a href="#demo" title="演示">演示</a></li>
+			<li><a href="#param" title="可配置参数">可配置参数</a></li>
+			<li><a href="#custom" title="多种用法">多种用法</a></li>
+		</ul>
+		<h2>AUTHOR</h2>
+		<ul>
+			<li><a href="" target="_blank">@cm</a></li>
+		</ul>
+	</div>
+	<div class="doc-content" id="doc-content">
+		<div class="layui-main">
+			<h1 class="doc-h1">Drawer</h1>
+			<div class="layui-text">
+				Drawer 抽屉组件
+			</div>
+
+
+			<fieldset class="layui-elem-field layui-field-title"><legend>使用方法</legend></fieldset>
+			<pre class="layui-code" lay-encode="true">
+全局配置                
+layui.config({
+    base:'../js/lay-module/',
+    version:true
+}).extend({
+    fcDrawer:'fcDrawer/fcDrawer',
+});
+
+页面中调用
+layui.use(['fcDrawer'],function(){
+    var fcDrawer = layui.fcDrawer;
+
+    //初始化               
+    fcDrawer.render({
+        clickBtn:'触发按钮ID',
+        open:{
+            elem:'抽屉层ID',
+        },
+    });
+
+    //通过事件来打开抽屉面板,必须已初始化过
+    fcDrawer.open('抽屉层ID',{title:'修改title内容'});
+});
+
+抽屉结构
+<div class="fc-drawer" id="必填" style="visibility: hidden;">//css是防止页面初始加载时候层会显示一下
+    <div class="fc-drawer-panel">
+        <div class="fc-drawer-body">
+            自定义内容
+        </div>
+    </div>
+</div>
+			</pre>
+			<br><br>
+			<fieldset class="layui-elem-field layui-field-title" ><legend>Demo</legend></fieldset>
+			<button class="layui-btn layui-btn-normal open1">open right</button>
+			<button class="layui-btn layui-btn-normal open2">open left</button>
+			<button class="layui-btn layui-btn-normal open3">open top</button>
+			<button class="layui-btn layui-btn-normal open4">open bottom</button>
+
+
+			<button class="layui-btn layui-btn-normal" lay-active="open">点击之后调用</button>
+
+			<div style="position: fixed;width:300px;height:300px;border-radius:5px;background:#ffffff7a;box-shadow:0 0 10px 5px rgba(0,0,0,.2);top:40%;left:1%;z-index:898;perspective:820px;transform:scale(.8)">
+				<div style="position: absolute;width:100%;height:100%;background:#91cb2ad4;transform: translateZ(0px) translateX(0%) rotateY(50deg);transform-origin:100% center;border-radius: 10px 0 0 10px;color:#fff;text-align:center;line-height:2;font-size:20px;letter-spacing: .5em;padding-top:30%;">我是个浮动元素<br>z-index:898</div>
+			</div>
+			<br><br>
+			<fieldset class="layui-elem-field layui-field-title" ><legend>API</legend></fieldset>
+			<table class="layui-table" lay-skin="line">
+				<thead>
+					<tr>
+						<td>参数</td>
+						<td>说明</td>
+						<td>类型</td>
+						<td>默认值</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>clickBtn</td>
+						<td>触发按钮ID，class</td>
+						<td>-</td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td>open:{...}</td>
+						<td>配置参数</td>
+						<td>-</td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td>yes:function(index){}</td>
+						<td>确认回调</td>
+						<td>-</td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td>cancel:function(index){}</td>
+						<td>取消回调</td>
+						<td>-</td>
+						<td>-</td>
+					</tr>
+				</tbody>				
+			</table>
+			<br><br>
+			<fieldset class="layui-elem-field layui-field-title" ><legend>API open{……}</legend></fieldset>
+			<table class="layui-table" lay-skin="line">
+				<thead>
+					<tr>
+						<td>参数</td>
+						<td>说明</td>
+						<td>类型</td>
+						<td>默认值</td>
+					</tr>
+				</thead>
+				<tbodty>
+
+					<tr>
+						<td>elem</td>
+						<td>抽屉层ID，class</td>
+						<td>-</td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td>placement</td>
+						<td>抽屉的方向</td>
+						<td>top | right | bottom | left</td>
+						<td>right</td>
+					</tr>
+					<tr>
+						<td>title</td>
+						<td>标题</td>
+						<td>string</td>
+						<td>-</td>
+					</tr>
+					<tr>
+						<td>closable</td>
+						<td>是否显示右上角的关闭按钮</td>
+						<td>boolean</td>
+						<td>true</td>
+					</tr>
+					<tr>
+						<td>footer</td>
+						<td>页脚，包含取消与确定按钮</td>
+						<td>boolean</td>
+						<td>true</td>
+					</tr>
+					<tr>
+						<td>mask</td>
+						<td>是否展示遮罩</td>
+						<td>boolean</td>
+						<td>true</td>
+					</tr>
+					<tr>
+						<td>maskClosable</td>
+						<td>点击蒙层是否允许关闭</td>
+						<td>boolean</td>
+						<td>true</td>
+					</tr>
+					<tr>
+						<td>theme</td>
+						<td>主题</td>
+						<td>light | dark</td>
+						<td>light</td>
+					</tr>
+					<tr>
+						<td>width</td>
+						<td>抽屉宽度，只在right|left方向展开时生效</td>
+						<td>string</td>
+						<td>360px</td>
+					</tr>
+					<tr>
+						<td>zIndex</td>
+						<td>层级</td>
+						<td>string</td>
+						<td>1000</td>
+					</tr>
+					<tr>
+						<td>btn</td>
+						<td>footer开启状态，设置btn文字</td>
+						<td>['取消','提交']</td>
+						<td>['Cancel','Submit']</td>
+					</tr>
+					<tr>
+						<td>anim</td>
+						<td>动画效果</td>
+						<td>string 1|2</td>
+						<td>1</td>
+					</tr>
+					<tr>
+						<td>keyboard</td>
+						<td>是否支持键盘 esc 关闭</td>
+						<td>boolean</td>
+						<td>true</td>
+					</tr>
+					<tr>
+						<td>className</td>
+						<td>自定义外层class名</td>
+						<td>-</td>
+						<td>-</td>
+					</tr>
+				</tbodty>
+			</table>
+			<br><br>
+			<fieldset class="layui-elem-field layui-field-title" ><legend>yes - 确定按钮回调方法</legend></fieldset>
+			<div class="layui-text">类型：Function，默认：null<br>
+该回调携带一个参数，为当前层DOM对象。如：</div>
+<pre class="layui-code">
+yes:function(index){
+    fcDrawer.close(index);//手工关闭
+},
+</pre>
+			<br><br>
+			<fieldset class="layui-elem-field layui-field-title" ><legend>cancel - 取消按钮回调方法（右上角关闭，ESC关闭）</legend></fieldset>
+			<div class="layui-text">类型：Function，默认：null<br>
+该回调携带一个参数，为当前层DOM对象。默认会自动触发关闭。如果不想关闭，return false即可如：</div>
+<pre class="layui-code">
+cancel:function(index){
+    if(confirm('确定要关闭么')){ //只有当点击confirm框的确定时，该层才会关闭
+        fcDrawer.close(index)
+    }
+    return false; 
+}
+</pre>
+
+
+
+				
+		</div>
+	</div>
+</div>
+
+<!-- 抽屉 demo1 begin-->
+<div class="fc-drawer" id="demo1" style="">
+	<div class="fc-drawer-panel">
+		<!-- <button class="fc-drawer-toggle"><i class="layui-icon layui-icon-set"></i></button> -->
+		<div class="fc-drawer-body">
+			<ul>
+				<li>item1 .......</li>
+				<li>item2 .......</li>
+				<li>item3 .......</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- 抽屉 demo1 end-->
+
+
+<!-- 抽屉 demo2 begin-->
+<div class="fc-drawer" id="demo2" style="visibility: hidden;">
+	<div class="fc-drawer-panel">
+		<div class="fc-drawer-body">
+			<ul>
+				<li>item1 .......</li>
+				<li>item2 .......</li>
+				<li>item3 .......</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<!-- 抽屉 demo2 end-->
+
+
+<!-- 抽屉 demo3 begin-->
+<div class="fc-drawer" id="demo3" style="visibility: hidden;">
+	<div class="fc-drawer-panel">
+		<div class="fc-drawer-body">
+			<div style="text-align: center;line-height: 100px;"> 我从顶部下来 </div>
+		</div>
+	</div>
+</div>
+<!-- 抽屉 demo3 end-->
+
+<!-- 抽屉 demo4 begin-->
+<div class="fc-drawer" id="demo4" style="visibility: hidden;">
+	<div class="fc-drawer-panel">
+		<div class="fc-drawer-body">
+			<div style="text-align: center;line-height: 100px;"> 我从底部上来 </div>
+		</div>
+	</div>
+</div>
+<!-- 抽屉 demo4 end-->
+
+
+
+</body>
+
+<script>
+
+// layui 配置
+layui.config({
+	base: 'js/lay-module/', 		//当前js目录
+}).extend({
+	fcDrawer:'fcDrawer/fcDrawer',
+})
+
+layui.use(['jquery','code','fcDrawer','element','util','layer'],function(){
+	var $ = layui.jquery,
+		fcDrawer = layui.fcDrawer,
+		element = layui.element,
+		util 	= layui.util,
+		layer 	= layui.layer;
+
+	layui.code({
+		encode: true
+		// ,skin: 'notepad'
+	});
+
+	// 点击触发
+	util.event('lay-active',{
+		open:function(){
+			if(confirm('我要自动打开抽屉')){
+				fcDrawer.open('#demo1');	//通过事件来打开抽屉面板
+			}			
+		},
+	})
+
+
+
+	fcDrawer.render({
+		clickBtn:'.open1',
+		open:{
+			elem:'#demo1',
+			placement:'right',
+			title:'右侧打开的抽屉',
+			closable:true,
+			footer:true,
+			mask:true,
+			maskClosable:true,
+			theme:'light',
+			width:300,
+			zIndex:899,
+			btn:['取消','提交'],
+			sideBtn:true,	// anim:2 不适合使用这个按钮
+			anim:1,
+		},
+		yes:function(index){
+			alert('yes')
+			fcDrawer.close(index);
+		},
+		// cancel:function(index){
+		//   if(confirm('确定要关闭么')){ //只有当点击confirm框的确定时，该层才会关闭
+		//     fcDrawer.close(index)
+		//   }
+		//   return false; 
+		// }
+	});
+
+	
+	fcDrawer.render({
+		clickBtn:'.open2',
+		open:{
+			elem:'#demo2',
+			placement:'left',
+			anim:2,
+		},		
+		cancel:function(index){
+			fcDrawer.close(index);
+			console.log('2')
+		}		
+	});
+
+	fcDrawer.render({
+		clickBtn:'.open3',
+		open:{
+			elem:'#demo3',
+			placement:'top',
+			title:'test',
+		},		
+	});
+
+	fcDrawer.render({
+		clickBtn:'.open4',
+		open:{
+			elem:'#demo4',
+			placement:'bottom',
+			anim:2,
+		},			
+	});
+
+
+	
+
+})
+</script>
+</html>

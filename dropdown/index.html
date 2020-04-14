@@ -12,7 +12,7 @@
     <script src="https://www.layuicdn.com/layui-v2.5.5/layui.js"></script>
     <style>
 a {color:#0e83e5;}   
-.mc-dropdown {display:inline-block;}
+.fc-dropdown {display:inline-block;}
 .layui-btn>i {font-size: 12px!important;margin-left: 5px;}
 	</style>
 </head>
@@ -39,26 +39,51 @@ a {color:#0e83e5;}
 				Dropdown 下拉组件
 			</div>
 
+
+
+			<br><br>
+			<div class="fc-dropdown-group">
+				<button class="layui-btn layui-btn-sm layui-btn-primary">Dropdown</button>
+				<div class="fc-dropdown" type="hover" placement="right">
+					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-primary"><i class="layui-icon layui-icon-more-vertical"></i></a>
+					<div class="fc-dropdown-menu" style="display:none;">
+						<ul class="fc-dropdown-menu-list">
+							<li><a href="javascript:;">Basic Elements</a></li>
+							<li><a href="javascript:;">Form Advanced</a></li>
+							<li><a href="javascript:;">Wizard</a></li>
+						</ul>
+					</div>	
+				</div>
+			</div>
+			<br><br>
+
+
+
+			<button class="layui-btn layui-btn-radius layui-btn-warm add">动态添加dropdown</button>
+
+			<br>
+
+
 			<fieldset class="layui-elem-field layui-field-title" id="use"><legend>使用方法</legend></fieldset>
 			<pre class="layui-code" lay-encode="true">
 				// layui 配置插件目录
 				layui.config({
 				   base: 'js/lay-module/',
 				}).extend({
-				   mcDropdown:'mcDropdown/mcDropdown',
+				   fcDropdown:'fcDropdown/fcDropdown',
 				})
 
 				调用
-				layui.use(['mcDropdown'],function(){
-				    var mcDropdown = layui.mcDropdown;
-				    mcDropdown.render();
+				layui.use(['fcDropdown'],function(){
+				    var fcDropdown = layui.fcDropdown;
+				    fcDropdown.render();
 				})
 
 				DOM结构
-				<div class="mc-dropdown">
+				<div class="fc-dropdown">
 				  <a href="javascript:void(0)">button</a>
-				  <div class="mc-dropdown-menu" style="display:none;">
-				    <ul class="mc-dropdown-menu-list">
+				  <div class="fc-dropdown-menu" style="display:none;">
+				    <ul class="fc-dropdown-menu-list">
 				      <li><a href="javascript:;">item1</a></li>
 				      ……
 				    </ul>
@@ -66,18 +91,14 @@ a {color:#0e83e5;}
 				</div>			
 			</pre>
 
-			<br><br>
-
-
-
 			<fieldset class="layui-elem-field layui-field-title" id="demo"><legend>触发方式 hover</legend></fieldset>
 
 			<div style="margin-bottom: 50px;">
 
-				<div class="mc-dropdown" type="hover">
+				<div class="fc-dropdown" type="hover">
 					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-normal">button left<i class="layui-icon layui-icon-down"></i></a>
-					<div class="mc-dropdown-menu" style="display:none;">
-						<ul class="mc-dropdown-menu-list">
+					<div class="fc-dropdown-menu" style="display:none;">
+						<ul class="fc-dropdown-menu-list">
 							<li><a href="javascript:;">Basic Elements</a></li>
 							<li><a href="javascript:;">Form Advanced</a></li>
 							<li><a href="javascript:;">Wizard</a></li>
@@ -85,10 +106,10 @@ a {color:#0e83e5;}
 					</div>	
 				</div>
 
-				<div class="mc-dropdown" type="hover" placement="center" style="margin-left:50px;">
+				<div class="fc-dropdown" type="hover" placement="center" style="margin-left:50px;">
 					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-normal">center<i class="layui-icon layui-icon-down"></i></a>
-					<div class="mc-dropdown-menu" style="display:none;">
-						<ul class="mc-dropdown-menu-list">
+					<div class="fc-dropdown-menu" style="display:none;">
+						<ul class="fc-dropdown-menu-list">
 							<li><a href="javascript:;">Basic Elements</a></li>
 							<li><a href="javascript:;">Form Advanced</a></li>
 							<li><a href="javascript:;">Wizard</a></li>
@@ -96,13 +117,13 @@ a {color:#0e83e5;}
 					</div>	
 				</div>
 
-				<div class="mc-dropdown" type="hover" placement="right" style="margin-left:50px;">
+				<div class="fc-dropdown" type="hover" placement="right" style="margin-left:50px;">
 					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-normal">hover right<i class="layui-icon layui-icon-down"></i></a>
-					<div class="mc-dropdown-menu" style="display:none;">
-						<ul class="mc-dropdown-menu-list">
+					<div class="fc-dropdown-menu" style="display:none;">
+						<ul class="fc-dropdown-menu-list">
 							<li><a href="javascript:;">Basic Elements</a></li>
 							<li>
-								<a href="javascript:;" class="mc-dropdown-menu-title">Form Advanced</a>
+								<a href="javascript:;" class="fc-dropdown-menu-title">Form Advanced</a>
 								<ul>
 									<li><a href="avascript:;">Mac</a></li>
 									<li><a href="avascript:;">iPad</a></li>
@@ -113,10 +134,10 @@ a {color:#0e83e5;}
 					</div>	
 				</div>
 
-				<div class="mc-dropdown" type="hover" placement="topCenter" style="margin-left:50px;">
+				<div class="fc-dropdown" type="hover" placement="topCenter" style="margin-left:50px;">
 					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-normal">hover button top center<i class="layui-icon layui-icon-down"></i></a>
-					<div class="mc-dropdown-menu" style="display:none;">
-						<ul class="mc-dropdown-menu-list">
+					<div class="fc-dropdown-menu" style="display:none;">
+						<ul class="fc-dropdown-menu-list">
 							<li><a href="javascript:;">Basic Elements</a></li>
 							<li><a href="javascript:;">Form Advanced</a></li>
 							<li><a href="javascript:;">Wizard</a></li>
@@ -130,10 +151,10 @@ a {color:#0e83e5;}
 
 			<div class="item" style="margin-bottom: 50px;">
 
-				<div class="mc-dropdown" type="click">
+				<div class="fc-dropdown" type="click">
 					<a href="javascript:void(0)" class="layui-btn layui-btn-sm">button click right<i class="layui-icon layui-icon-down"></i></a>
-					<div class="mc-dropdown-menu" style="display:none;">
-						<ul class="mc-dropdown-menu-list">
+					<div class="fc-dropdown-menu" style="display:none;">
+						<ul class="fc-dropdown-menu-list">
 							<li><a href="javascript:;">Basic Elements</a></li>
 							<li><a href="javascript:;">Form Advanced</a></li>
 							<li><a href="javascript:;">Wizard</a></li>
@@ -142,10 +163,10 @@ a {color:#0e83e5;}
 				</div>
 
 
-				<div class="mc-dropdown" type="click" placement="center" style="margin-left:50px;">
+				<div class="fc-dropdown" type="click" placement="center" style="margin-left:50px;">
 					<a href="javascript:void(0)" class="layui-btn layui-btn-sm">button click center<i class="layui-icon layui-icon-down"></i></a>
-					<div class="mc-dropdown-menu" style="display:none;">
-						<ul class="mc-dropdown-menu-list">
+					<div class="fc-dropdown-menu" style="display:none;">
+						<ul class="fc-dropdown-menu-list">
 							<li><a href="javascript:;">Basic Elements</a></li>
 							<li><a href="javascript:;">Form Advanced</a></li>
 							<li><a href="javascript:;">Wizard</a></li>
@@ -154,10 +175,10 @@ a {color:#0e83e5;}
 				</div>
 
 
-				<div class="mc-dropdown" type="click" placement="topLeft" style="margin-left:50px;">
+				<div class="fc-dropdown" type="click" placement="topLeft" style="margin-left:50px;">
 					<a href="javascript:void(0)" class="layui-btn layui-btn-sm">button click top left<i class="layui-icon layui-icon-down"></i></a>
-					<div class="mc-dropdown-menu" style="display:none;">
-						<ul class="mc-dropdown-menu-list">
+					<div class="fc-dropdown-menu" style="display:none;">
+						<ul class="fc-dropdown-menu-list">
 							<li><a href="javascript:;">Basic Elements</a></li>
 							<li><a href="javascript:;">Form Advanced</a></li>
 							<li><a href="javascript:;">Wizard</a></li>
@@ -166,15 +187,15 @@ a {color:#0e83e5;}
 				</div>
 
 
-				<div class="mc-dropdown" type="click" placement="topCenter" style="margin-left:50px;">
+				<div class="fc-dropdown" type="click" placement="topCenter" style="margin-left:50px;">
 					<a href="javascript:void(0)" class="layui-btn layui-btn-sm">top <i class="layui-icon layui-icon-down"></i></a>
-					<div class="mc-dropdown-menu" style="display:none;">
-						<ul class="mc-dropdown-menu-list">
+					<div class="fc-dropdown-menu" style="display:none;">
+						<ul class="fc-dropdown-menu-list">
 							<li><a href="javascript:;">Basic Elements</a></li>
 							<li><a href="javascript:;">Form Advanced</a></li>
 							<li><a href="javascript:;">Wizard</a></li>
 							<li>
-								<a href="javascript:;" class="mc-dropdown-menu-title">Shop and Learn</a>
+								<a href="javascript:;" class="fc-dropdown-menu-title">Shop and Learn</a>
 								<ul>
 									<li><a href="avascript:;">Mac</a></li>
 									<li><a href="avascript:;">iPad</a></li>
@@ -193,7 +214,7 @@ a {color:#0e83e5;}
 
 			<fieldset class="layui-elem-field layui-field-title" id="param"><legend>可配置参数</legend></fieldset>
 			<pre class="layui-code" lay-encode="true">
-			mcDropdown.render({
+			fcDropdown.render({
 			    anim:false,        //动画效果：param: false|2，关闭|效果2
 			    link:{             //自定义hover风格
 			        bg:'#188ae2',
@@ -206,40 +227,40 @@ a {color:#0e83e5;}
 
 			<fieldset class="layui-elem-field layui-field-title"><legend>弹出位置</legend></fieldset>
 			<div>
-				<div class="mc-dropdown" type="hover">
+				<div class="fc-dropdown" type="hover">
 					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-primary">button left<i class="layui-icon layui-icon-down"></i></a>
-					<div class="mc-dropdown-menu" style="display:none;">
-						<ul class="mc-dropdown-menu-list">
+					<div class="fc-dropdown-menu" style="display:none;">
+						<ul class="fc-dropdown-menu-list">
 							<li><a href="javascript:;">Basic Elements</a></li>
 							<li><a href="javascript:;">Form Advanced</a></li>
 							<li><a href="javascript:;">Wizard</a></li>
 						</ul>
 					</div>	
 				</div>
-				<div class="mc-dropdown" type="hover" placement="right">
+				<div class="fc-dropdown" type="hover" placement="right">
 					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-primary">button right<i class="layui-icon layui-icon-down"></i></a>
-					<div class="mc-dropdown-menu" style="display:none;">
-						<ul class="mc-dropdown-menu-list">
+					<div class="fc-dropdown-menu" style="display:none;">
+						<ul class="fc-dropdown-menu-list">
 							<li><a href="javascript:;">Basic Elements</a></li>
 							<li><a href="javascript:;">Form Advanced</a></li>
 							<li><a href="javascript:;">Wizard</a></li>
 						</ul>
 					</div>	
 				</div>
-				<div class="mc-dropdown" type="hover" placement="center">
+				<div class="fc-dropdown" type="hover" placement="center">
 					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-primary">button center demo<i class="layui-icon layui-icon-down"></i></a>
-					<div class="mc-dropdown-menu" style="display:none;">
-						<ul class="mc-dropdown-menu-list">
+					<div class="fc-dropdown-menu" style="display:none;">
+						<ul class="fc-dropdown-menu-list">
 							<li><a href="javascript:;">Basic Elements</a></li>
 							<li><a href="javascript:;">Form Advanced</a></li>
 							<li><a href="javascript:;">Wizard</a></li>
 						</ul>
 					</div>	
 				</div>
-				<div class="mc-dropdown" type="hover" placement="topLeft">
+				<div class="fc-dropdown" type="hover" placement="topLeft">
 					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-primary">button top left<i class="layui-icon layui-icon-down"></i></a>
-					<div class="mc-dropdown-menu" style="display:none;">
-						<ul class="mc-dropdown-menu-list">
+					<div class="fc-dropdown-menu" style="display:none;">
+						<ul class="fc-dropdown-menu-list">
 							<li><a href="javascript:;">Basic Elements</a></li>
 							<li><a href="javascript:;">Form Advanced</a></li>
 							<li><a href="javascript:;">Wizard</a></li>
@@ -247,10 +268,10 @@ a {color:#0e83e5;}
 					</div>	
 				</div>
 
-				<div class="mc-dropdown" type="hover" placement="topCenter">
+				<div class="fc-dropdown" type="hover" placement="topCenter">
 					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-primary">button top center<i class="layui-icon layui-icon-down"></i></a>
-					<div class="mc-dropdown-menu" style="display:none;">
-						<ul class="mc-dropdown-menu-list">
+					<div class="fc-dropdown-menu" style="display:none;">
+						<ul class="fc-dropdown-menu-list">
 							<li><a href="javascript:;">Basic Elements</a></li>
 							<li><a href="javascript:;">Form Advanced</a></li>
 							<li><a href="javascript:;">Wizard</a></li>
@@ -258,10 +279,10 @@ a {color:#0e83e5;}
 					</div>	
 				</div>
 
-				<div class="mc-dropdown" type="hover" placement="topRight">
+				<div class="fc-dropdown" type="hover" placement="topRight">
 					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-primary">button top right<i class="layui-icon layui-icon-down"></i></a>
-					<div class="mc-dropdown-menu" style="display:none;">
-						<ul class="mc-dropdown-menu-list">
+					<div class="fc-dropdown-menu" style="display:none;">
+						<ul class="fc-dropdown-menu-list">
 							<li><a href="javascript:;">Basic Elements</a></li>
 							<li><a href="javascript:;">Form Advanced</a></li>
 							<li><a href="javascript:;">Wizard</a></li>
@@ -274,19 +295,19 @@ a {color:#0e83e5;}
 				<blockquote class="layui-elem-quote">
 				弹出位置<br>
 				placement=left | center | right  | topLeft  |  topCenter  |  topRight  <br>
-				<span class="layui-badge">示例：&lt;div class="mc-dropdown" type="hover" placement="topRight"&gt;</span>
+				<span class="layui-badge">示例：&lt;div class="fc-dropdown" type="hover" placement="topRight"&gt;</span>
 			</blockquote>
 			</div>
 			<br><br>
 			<fieldset class="layui-elem-field layui-field-title" id="custom"><legend>多种用法</legend></fieldset>
 
 					<div>
-						<div class="mc-dropdown" type="hover" placement="topLeft">
+						<div class="fc-dropdown" type="hover" placement="topLeft">
 							<a href="javascript:void(0)" class="layui-btn layui-btn-sm">二级菜单 hover me</a>
-							<div class="mc-dropdown-menu"style="display:none">
-								<ul class="mc-dropdown-menu-list">
+							<div class="fc-dropdown-menu"style="display:none">
+								<ul class="fc-dropdown-menu-list">
 									<li>
-										<a href="javascript:;" class="mc-dropdown-menu-title">Shop and Learn</a>
+										<a href="javascript:;" class="fc-dropdown-menu-title">Shop and Learn</a>
 										<ul>
 											<li><a href="avascript:;">Mac</a></li>
 											<li><a href="avascript:;">iPad</a></li>
@@ -299,23 +320,23 @@ a {color:#0e83e5;}
 										</ul>
 									</li>
 									<li>
-										<a href="javascript:;" class="mc-dropdown-disabled" disabled>禁止了某个菜单</a>
+										<a href="javascript:;" class="fc-dropdown-disabled" disabled>禁止了某个菜单</a>
 									</li>
 									<li><a href="javascript:;">Apple Store</a></li>
 									<li>
-										<a href="javascript:;" class="mc-dropdown-disabled mc-dropdown-menu-title">点击不会收起，使用任何结构</a>
-										<ul class="mc-dropdown-disabled">
-											<li style="padding:15px;color:#a5acb9;line-height: 1.5">默认点击都会收起弹层，想不要收起，<Br>就要在结构上添加class“mc-dropdown-disabled”</li>
+										<a href="javascript:;" class="fc-dropdown-disabled fc-dropdown-menu-title">点击不会收起，使用任何结构</a>
+										<ul class="fc-dropdown-disabled">
+											<li style="padding:15px;color:#a5acb9;line-height: 1.5">默认点击都会收起弹层，想不要收起，<Br>就要在结构上添加class:fc-dropdown-disabled<Br>二级菜单超出屏幕，会出现在左边</li>
 										</ul>
 									</li>
 								</ul>
 							</div>	
 						</div>
 
-						<div class="mc-dropdown" type="hover" style="margin-left:50px;">
+						<div class="fc-dropdown" type="hover" style="margin-left:50px;">
 							<a href="javascript:;" class="layui-btn layui-btn-sm layui-btn-normal">自定义内容</a>
-							<div class="mc-dropdown-menu" style="display: none;">
-								<div class="layui-tab layui-tab-brief mc-dropdown-disabled" lay-filter="docDemoTabBrief">
+							<div class="fc-dropdown-menu" style="display: none;">
+								<div class="layui-tab layui-tab-brief fc-dropdown-disabled" lay-filter="docDemoTabBrief">
 								  <ul class="layui-tab-title">
 								    <li class="layui-this">网站设置</li>
 								    <li>用户管理</li>
@@ -337,8 +358,8 @@ a {color:#0e83e5;}
 						2、下拉层中可以放任何结构<br>
 						3、禁止某个菜单的点击事件，阻止收起，<Br>
 						<blockquote class="layui-elem-quote">
-							&lt;a href="javascript:;" class="<span class="layui-badge">mc-dropdown-disabled</span>" <span class="layui-badge">disabled</span>&gt;<Br>
-							<span class="layui-badge layui-bg-black">mc-dropdown-disabled</span>  只禁止收起事件的发生<Br>
+							&lt;a href="javascript:;" class="<span class="layui-badge">fc-dropdown-disabled</span>" <span class="layui-badge">disabled</span>&gt;<Br>
+							<span class="layui-badge layui-bg-black">fc-dropdown-disabled</span>  只禁止收起事件的发生<Br>
 							<span class="layui-badge layui-bg-black">disabled</span>  禁止变灰
 						</blockquote>
 					</div>
@@ -359,26 +380,63 @@ a {color:#0e83e5;}
 layui.config({
 	base: 'js/lay-module/', 		//当前js目录
 }).extend({
-	mcDropdown:'mcDropdown/mcDropdown',
+	fcDropdown:'fcDropdown/fcDropdown',
 })
 
-layui.use(['jquery','code','mcDropdown','element'],function(){
+layui.use(['jquery','code','fcDropdown','element'],function(){
 	var $ = layui.jquery,
-		mcDropdown = layui.mcDropdown,
+		fcDropdown = layui.fcDropdown,
 		element = layui.element;
 
 	layui.code({
 		encode: true
 		// ,skin: 'notepad'
 	});
-	mcDropdown.render();
-	// mcDropdown.render({
+	fcDropdown.render();
+	// fcDropdown.render({
 	// 	anim:2,	//动画类型 params:1/2/false,默认1
 	// 	link:{
 	// 		bg:'#188ae2',
 	// 		color:'#fff'
 	// 	},
 	// })
+	
+	$('.add').on('click',function(){
+		$(this).after(`
+				<div class="fc-dropdown" type="hover" placement="center" style="margin-left:50px;">
+					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-normal">hover center<i class="layui-icon layui-icon-down"></i></a>
+					<div class="fc-dropdown-menu" style="display:none;">
+						<ul class="fc-dropdown-menu-list">
+							<li><a href="javascript:;">Basic Elements</a></li>
+							<li><a href="javascript:;">Form Advanced</a></li>
+							<hr>
+							<li>
+								<a href="javascript:;" class="fc-dropdown-disabled fc-dropdown-menu-title">点击不会收起，使用任何结构</a>
+								<ul class="fc-dropdown-disabled">
+									<li style="padding:15px;color:#a5acb9;line-height: 1.5">默认点击都会收起弹层，想不要收起，<Br>就要在结构上添加class“fc-dropdown-disabled”<Br>二级菜单超出屏幕，会出现在左边</li>
+								</ul>
+							</li>
+						</ul>
+					</div>	
+				</div>
+				<div class="fc-dropdown" type="hover" placement="right" style="margin-left:50px;">
+					<a href="javascript:void(0)" class="layui-btn layui-btn-sm layui-btn-normal">hover right<i class="layui-icon layui-icon-down"></i></a>
+					<div class="fc-dropdown-menu" style="display:none;">
+						<ul class="fc-dropdown-menu-list">
+							<li><a href="javascript:;">Basic Elements</a></li>
+							<li>
+								<a href="javascript:;" class="fc-dropdown-menu-title">Form Advanced</a>
+								<ul>
+									<li><a href="avascript:;">Mac</a></li>
+									<li><a href="avascript:;">iPad</a></li>
+								</ul>
+							</li>
+							<li><a href="javascript:;">Wizard</a></li>
+						</ul>
+					</div>	
+				</div>
+			`);
+	})
 })
 </script>
 

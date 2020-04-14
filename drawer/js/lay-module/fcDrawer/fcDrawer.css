@@ -1,0 +1,94 @@
+/**
+ * [fcDrawer 抽屉]
+ * @基于layui drawer
+ * @ver: 1.0
+ * @date: 2020-3-19
+ * @author: cm.yu
+ */
+.fc-drawer {position: fixed;z-index:-10;color:#333;/*visibility: hidden;*/}
+.fc-drawer * {-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+.fc-drawer-panel {position:absolute;z-index:1;box-shadow:0 8px 10px -5px rgba(0,0,0,.2), 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12);display: flex;flex-direction:column;background: #fff;color:#333;}
+
+.fc-drawer[placement=right] {right:0;width:0%;height:100%;}
+.fc-drawer[placement=left] {left:0;width:0%;height:100%;}
+.fc-drawer[placement=top] {top:0;;width:100%;height:0%;}
+.fc-drawer[placement=bottom] {bottom:0;;width:100%;height:0%;}
+.fc-drawer[placement=right] .fc-drawer-panel {top:0;right:0;height: 100vh;width:360px;transform:translateX(100%);}
+.fc-drawer[placement=left] .fc-drawer-panel {top:0;left:0;height: 100vh;width:360px;transform:translateX(-100%);}
+.fc-drawer[placement=top] .fc-drawer-panel {top:0;left:0;width:100vw;transform:translateY(-150%);}
+.fc-drawer[placement=bottom] .fc-drawer-panel {left:0;bottom:0;width:100vw;transform:translateY(150%);}
+
+/*遮罩层*/
+.fc-drawer-mask {position: fixed;width:100%;height:100%;top:0;left:0;background:rgba(50,58,70,.55);opacity:0;visibility: hidden;transition:all .3s ease-in-out;}
+
+/*theme*/
+.fc-drawer[theme=dark] .fc-drawer-panel {background: #23252c;color:#fff;}
+.fc-drawer[theme=dark] .fc-drawer-header,.fc-drawer[theme=dark] .fc-drawer-footer {border-color:#464a55;}
+.fc-drawer[theme=dark] .fc-drawer-close i {color:#fff;}
+
+/*关闭按钮*/
+.fc-drawer-close {position: absolute;top:0;right:0;width:40px;height: 48px;line-height:48px;text-align:center;border:none;background: transparent;cursor: pointer;}
+.fc-drawer-close i {font-size:20px;}
+
+/*侧边触发按钮*/
+.fc-drawer-toggle-button {position: absolute;width:48px;height:48px;background-color:#1890ff;border:none;cursor: pointer;outline: none;}
+.fc-drawer-toggle-button i {font-size: 22px;color:#fff;}
+.fc-drawer[placement=right] .fc-drawer-toggle-button {top:20%;left:-48px;box-shadow:-2px 0 5px rgba(0,0,0,.1);border-radius:6px 0 0 6px;}
+.fc-drawer[placement=left] .fc-drawer-toggle-button {top:20%;right:-48px;box-shadow:2px 0 5px rgba(0,0,0,.1);border-radius:0 6px 6px 0;}
+
+/*框架*/
+.fc-drawer-header {border-bottom:1px solid #efefef;padding:15px 20px;}
+.fc-drawer-header h3 {font-size:16px;font-weight: 300;}
+.fc-drawer-body {padding:20px;overflow:auto;flex:1;}
+.fc-drawer-footer {padding:10px 20px;border-top:1px solid #efefef;text-align:right;}
+
+/*开启状态*/
+.fc-drawer-open-show-body {overflow: hidden;}
+
+.fc-drawer[drawer-open][placement=right],
+.fc-drawer[drawer-open][placement=left]
+{
+	width:100%;z-index: 1000;visibility: initial!important;
+}
+
+.fc-drawer[drawer-open][placement=top],
+.fc-drawer[drawer-open][placement=bottom]
+{
+	height:100%;z-index: 1000;visibility: initial!important
+}
+
+.fc-drawer[drawer-open][placement=right] .fc-drawer-panel,
+.fc-drawer[drawer-open][placement=left] .fc-drawer-panel 
+{
+	transform:translateX(0%);transition:all .3s ease-in-out;
+}
+
+.fc-drawer[drawer-open][placement=top] .fc-drawer-panel,
+.fc-drawer[drawer-open][placement=bottom] .fc-drawer-panel 
+{
+	transform:translateY(0%);transition:all .3s ease-in-out;
+}
+
+.fc-drawer[drawer-open] .fc-drawer-mask {opacity: 1;visibility:visible;}
+
+/*点击遮罩关闭*/
+.fc-drawer-open {width:100%;z-index: 1000;}
+.fc-drawer-open .fc-drawer-panel {transition:all .3s ease-in-out;}
+
+/*动画切换效果 2*/
+.fc-drawer[placement=right] .fc-drawer-panel-effetc-2 {position: fixed;height:100%;top:0;right:0;perspective:1000px;z-index: 1;}
+.fc-drawer[placement=right] .fc-drawer-panel-effetc-2 .fc-drawer-panel {transform: translateZ(50px) translateX(0%) rotateY(70deg)!important;transform-origin:100% center;opacity: 0;}
+.fc-drawer[drawer-open][placement=right] .fc-drawer-panel-effetc-2 .fc-drawer-panel {transform: translateZ(0px) translateX(0%) rotateY(0deg)!important;opacity: 1;}
+
+.fc-drawer[placement=left] .fc-drawer-panel-effetc-2 {position: fixed;height:100%;top:0;left:0;perspective:1000px;z-index: 1;}
+.fc-drawer[placement=left] .fc-drawer-panel-effetc-2 .fc-drawer-panel {transform: translateZ(0px) translateX(0%) rotateY(-50deg)!important;transform-origin:0 center;opacity: 0;}
+.fc-drawer[drawer-open][placement=left] .fc-drawer-panel-effetc-2 .fc-drawer-panel {transform: translateZ(0px) translateX(0%) rotateY(0deg)!important;opacity: 1;}
+
+.fc-drawer[placement=top] .fc-drawer-panel-effetc-2 {position: fixed;width:100%;top:0;perspective:1000px;z-index: 1;}
+.fc-drawer[placement=top] .fc-drawer-panel-effetc-2 .fc-drawer-panel {transform: translateZ(0px) translateY(0%) rotateX(50deg)!important;transform-origin:center 0;opacity: 0;}
+.fc-drawer[drawer-open][placement=top] .fc-drawer-panel-effetc-2 .fc-drawer-panel {transform: translateZ(0px) translateY(0%) rotateX(0deg)!important;opacity: 1;}
+
+.fc-drawer[placement=bottom] .fc-drawer-panel-effetc-2 {position: fixed;width:100%;bottom:0;perspective:1000px;z-index: 1;}
+.fc-drawer[placement=bottom] .fc-drawer-panel-effetc-2 .fc-drawer-panel {transform: translateZ(0px) translateY(0%) rotateX(-50deg)!important;transform-origin:0 100%;opacity: 0;}
+.fc-drawer[drawer-open][placement=bottom] .fc-drawer-panel-effetc-2 .fc-drawer-panel {transform: translateZ(0px) translateY(0%) rotateX(0deg)!important;opacity: 1;}
+

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="renderer" content="webkit">
+        <title>编辑器演示</title>
+        <link rel="stylesheet" href="https://www.layuicdn.com/layui/css/layui.css">
+    </head>
+    <body>
+        <div style="width: 700px;">
+            <div id="editor1" style="height:300px;"></div>
+        </div>
+        <br>
+        <button class="layui-btn" lay-active="editorAdd1">初始化内容</button>
+        <button class="layui-btn" lay-active="editorGet1">获取内容</button>
+        <button class="layui-btn" lay-active="editorAppend1">追加内容</button>
+        <button class="layui-btn layui-btn-danger" lay-active="editorDisabled1">禁用</button>
+        <button class="layui-btn layui-btn-normal" lay-active="editorEnable1">启用</button>
+        <button class="layui-btn layui-btn-danger" lay-active="editorClear1">清空</button>
+
+        
+
+        <div style="width: 700px;">
+            <div id="editor2" style="height:300px;"></div>
+        </div>
+        <br>
+        <button class="layui-btn" lay-active="editorAdd2">初始化内容</button>
+        <button class="layui-btn" lay-active="editorGet2">获取内容</button>
+        <button class="layui-btn" lay-active="editorAppend2">追加内容</button>
+        <button class="layui-btn layui-btn-danger" lay-active="editorDisabled2">禁用</button>
+        <button class="layui-btn layui-btn-normal" lay-active="editorEnable2">启用</button>
+        <button class="layui-btn layui-btn-danger" lay-active="editorClear2">清空</button>
+
+
+
+
+<script src="https://www.layuicdn.com/layui/layui.js"></script>
+<script>
+    /*设置模块入口并加载后台公共模块*/
+    layui.extend({
+        wangeditor:'js/lay-module/wangeditor/wangeditor', // wang编辑器主程序
+        editor:'js/lay-module/editorConfig',              // wang编辑器 全局配置
+    }).use('editor');
+
+    // layui.config({
+    //     base: 'wang/',         //当前js目录
+    // }).extend({
+    //     wangeditor:'wangeditor.min',
+    //     editor:'editorConfig',  
+    // })
+</script>
+
+<script>
+
+layui.use(['jquery','code','editor','util'],function(){
+    var $       = layui.jquery,
+        editor  = layui.editor,
+        util    = layui.util;
+
+    layui.code({
+        encode: true
+        // ,skin: 'notepad'
+    });
+
+    //初始化编辑器
+    editor.render(['editor1','editor2']);
+    //添加规则
+    util.event('lay-active',{
+        // demo 编辑器操作 begin
+        editorAdd1: function(){
+            editor.add({
+                elem:'editor1',
+                txt:'<p>初始化编辑器内容1</p>',
+            });
+        },
+        editorGet1: function(){
+            var txt = editor.getHtml('editor1');
+            alert(txt)
+        },
+        editorDisabled1:function(){
+            editor.disable('editor1');
+        },
+        editorEnable1:function(){
+            editor.enable('editor1');
+        },
+        editorClear1:function(){
+            editor.clear('editor1');
+        },
+        editorAppend1:function(){
+            editor.append({
+                elem:'editor1',
+                txt:'<p>追加内容到编辑器中。。。</p>',
+            })
+        },
+        // demo 编辑器操作 end
+
+
+        // demo 编辑器操作 begin
+        editorAdd2: function(){
+            editor.add({
+                elem:'editor2',
+                txt:'<p>初始化编辑器内容2</p>',
+            });
+        },
+        editorGet2: function(){
+            var txt = editor.getHtml('editor2');
+            alert(txt)
+        },
+        editorDisabled2:function(){
+            editor.disable('editor2');
+        },
+        editorEnable2:function(){
+            editor.enable('editor2');
+        },
+        editorClear2:function(){
+            editor.clear('editor2');
+        },
+        editorAppend2:function(){
+            editor.append({
+                elem:'editor2',
+                txt:'<p>追加内容到编辑器中。。。</p>',
+            })
+        },
+        // demo 编辑器操作 end
+
+
+
+
+    });
+});
+</script>
+    </body>
+</html>

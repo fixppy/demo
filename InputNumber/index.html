@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="renderer" content="webkit" />
+	<title>InputNumber数字输入框</title>
+	<link rel="stylesheet" href="css/doc.css">
+    <link rel="stylesheet" href="https://www.layuicdn.com/layui/css/layui.css">
+    <script src="https://www.layuicdn.com/layui/layui.js"></script>
+    <style>
+    	html {height: 100%;}
+		a {color:#0e83e5;}
+		.layui-card {border:1px solid #e6e6e6;}
+	</style>
+</head>
+<body>
+<div class="doc-layout">
+	<div class="doc-side">
+		<h1>数字输入框</h1>
+		<h2>文档目录</h2>
+		<ul>
+			<li><a href="#use" title="使用方法">使用方法</a></li>
+			<li><a href="#demo" title="演示">演示</a></li>
+			<li><a href="#param" title="可配置参数">可配置参数</a></li>
+			<li><a href="#custom" title="多种用法">多种用法</a></li>
+		</ul>
+		<h2>AUTHOR</h2>
+		<ul>
+			<li><a href="" target="_blank">@cm</a></li>
+		</ul>
+	</div>
+	<div class="doc-content" id="doc-content">
+		<div class="layui-main">
+			<h1 class="doc-h1">InputNumber数字输入框</h1>
+			<div class="layui-text">
+				InputNumber数字输入框
+			</div>
+
+
+			<fieldset class="layui-elem-field layui-field-title"><legend>使用方法</legend></fieldset>
+<pre class="layui-code">
+全局配置                
+layui.config({
+    base:'../js/lay-module/',
+    version:true
+}).extend({
+    fcInputNumber:'fcInputNumber/fcInputNumber',
+});
+
+页面中调用
+layui.use(['fcInputNumber'],function(){
+    var fcInputNumber = layui.fcInputNumber;
+});
+元素结构
+&lt;input class="fc-input-number"  />
+
+</pre>
+
+
+			<fieldset class="layui-elem-field layui-field-title"><legend>Demo</legend></fieldset>
+
+
+			<button class="layui-btn layui-btn-normal layui-btn-sm" lay-active="add">动态添加一个</button>
+			<div class="layui-text"></div>
+
+			<div class="layui-row layui-col-space20">
+				<div class="layui-col-md6">
+					<div class="layui-card">
+						<div class="layui-card-header">基本输入框</div>
+						<div class="layui-card-body">
+							<input class="fc-input-number" value="0" step="1" max="5" min="-5" fc-filter="test2"  />
+							<div class="layui-text layui-word-aux">
+								参数：value="0"　　step="1"　　max="5"　　min="-5"
+							</div>
+							<div class="layui-btn-group2">
+								<button class="layui-btn layui-btn-sm" lay-active="change">change params</button>
+							</div>
+							<div class="layui-text layui-word-aux">
+								改变参数：step="10",max="100",min="0"<br>
+								&lt;input class="fc-input-number" <span style="color:#6e8aef">fc-filter="test2"</span> /&gt;<br>
+								在需要渲染参数的input上，添加标识 fc-filter，render中可以放多个数组对象
+								<pre class="layui-code">
+								fcInputNumber.render([
+									{"test2": {"step" : 10, "min" : 10, "max" : 100, "value":10}},
+									{"test3": {"step" : 10, "min" : 10, "max" : 100, "value":10}},
+								]);
+								</pre>							
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-md6">
+					<div class="layui-card">
+						<div class="layui-card-header">自定义步数</div>
+						<div class="layui-card-body">
+							<input class="fc-input-number" value="0" step="5" max="20" fc-filter="test3" />
+							<div class="layui-text layui-word-aux">
+								参数：value="0"　　step="5"　　max="20"<br>
+								自定义步数的需要添加 readonly属性设置只读
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-md6">
+					<div class="layui-card">
+						<div class="layui-card-header">精度</div>
+						<div class="layui-card-body">
+							<input class="fc-input-number" value="0.1" step="0.1" max="1" precision="1"/>
+							<div class="layui-text layui-word-aux">
+								参数：value="0.1"　　step="0.1"　　max="1.0"　　precision="1"
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-md6">
+					<div class="layui-card">
+						<div class="layui-card-header">禁止</div>
+						<div class="layui-card-body">
+							<input class="fc-input-number" value="10" disabled id="test1" />
+							<button class="layui-btn layui-btn-normal layui-btn-sm" lay-active="toggleDisabled" style="vertical-align: top;margin-left:30px;">Toggle Disabled</button>
+							<div class="layui-text layui-word-aux">
+								参数：value="10"　　disabled<br>
+								改变状态后，进行渲染：fcInputNumber.render();
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-md6">
+					<div class="layui-card">
+						<div class="layui-card-header">Size</div>
+						<div class="layui-card-body">
+							<input class="fc-input-number" size="large"  />
+							<input class="fc-input-number" size="middle"  />
+							<input class="fc-input-number" size="small"  />
+							<div class="layui-text layui-word-aux">
+								三种大小的数字输入框，当 size 分别为 large 和 small 时，输入框高度为 40px 和 24px ，默认高度为 32px。
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="layui-col-md6">
+					<div class="layui-card">
+						<div class="layui-card-header">控制按钮位置</div>
+						<div class="layui-card-body">
+							<input class="fc-input-number" size="large" position="right" />
+							<div class="layui-text layui-word-aux">
+								控制按钮位置:默认左右， position="right" 右侧
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+
+
+			</div>
+			<!-- - end -	 -->
+		</div>
+	</div>
+</div>
+</body>
+
+<script>
+
+// layui 配置
+layui.config({
+	base: 'js/lay-module/', 		//当前js目录
+}).extend({
+	fcInputNumber:'fcInputNumber/fcInputNumber',
+})
+
+layui.use(['jquery','fcInputNumber','code','util','layer'],function(){
+	var $ = layui.jquery,
+		fcInputNumber = layui.fcInputNumber,
+		code = layui.code,
+		util 	= layui.util,
+		layer 	= layui.layer;
+
+	layui.code({
+		encode: true
+		// ,skin: 'notepad'
+	});
+
+
+	util.event('lay-active',{
+		toggleDisabled:function() {
+			var state = $('#test1').prop('disabled');
+			if(state){
+				$('#test1').prop('disabled',false);
+			}else{
+				$('#test1').prop('disabled',true);
+			}
+			fcInputNumber.render();
+		},
+		add:function() {
+			$('.layui-row').append(`
+			<div class="layui-col-md6">
+				<div class="layui-card">
+					<div class="layui-card-header">动态添加一个输入框</div>
+					<div class="layui-card-body">
+						<input class="fc-input-number" value="0" step="2" max="10" min="0" />
+						<div class="layui-text layui-word-aux">
+							参数：value="0"　　step="2"　　max="10"　　min="0"
+						</div>
+						<div class="layui-text layui-word-aux">动态元素添加后，进行渲染：fcInputNumber.render();</div>
+					</div>
+				</div>
+			</div>`);
+			fcInputNumber.render();
+		},
+		change:function() {
+
+			fcInputNumber.render([
+				{"test2": {"step" : 10, "min" : 10, "max" : 100, "value":10}},
+				// {"test3": {"step" : 10, "min" : 10, "max" : 100, "value":10}},
+			]);
+			$('[fc-filter=test2]').parent().next().html('参数：value="10"　　step="10"　　max="100"　　min="10"');
+		}
+	})
+
+})
+</script>
+</html>

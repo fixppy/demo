@@ -1,0 +1,39 @@
+/**
+ * [InputNumber 计数器]
+ * @基于layui
+ * @ver: 1.0
+ * @date: 2020-3-26
+ * @author: cm.yu
+ */
+.fc-input-number-wrap {display:inline-block;width:130px;position: relative;border:1px solid #dcdfe6;height:32px;line-height:32px;border-radius: 2px;overflow:hidden;transition: all .3s ease;-webkit-user-select: none;background: #fff;}
+.fc-input-number-wrap * {-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+.fc-input-number-wrap:hover {border-color:#40a9ff;}
+.fc-input-number-wrap[focus] {border-color:#40a9ff;box-shadow: 0 0 0 2px rgba(24,144,255,.2);}
+input.fc-input-number {outline:none;border:none;text-align:center;font-size:14px;color:#606266;width:100%;height:100%;vertical-align: top;background: #fff;transition: all .3s ease;}
+
+/*控制器*/
+.fc-input-number-handler {position: absolute;top:0;display: block;width:30px;background:#f5f7fa;text-align: center;cursor:pointer;transition: background .3s ease;}
+.fc-input-number-handler:hover {background-color:#fbfbfb;}
+.fc-input-number-handler-down {border-right:1px solid #dcdfe6;left:0;}
+.fc-input-number-handler-up {border-left:1px solid #dcdfe6;right:0;}
+.fc-input-number-handler[disabled] {cursor:not-allowed;}
+
+/*disabled*/
+.fc-input-number-wrap-disabled {cursor:not-allowed;}
+.fc-input-number-wrap-disabled:hover {border-color:#dcdfe6;}
+.fc-input-number-wrap-disabled input {cursor:not-allowed;background: #e4e7ed;color:#b5b9bf;}
+.fc-input-number-wrap-disabled .fc-input-number-handler {cursor:not-allowed;pointer-events: none;background: #e4e7ed;}
+.fc-input-number-wrap-disabled .fc-input-number-handler svg path {fill:#b5b9bf;}
+
+/*size*/
+.fc-input-number-lg {height:38px;line-height: 38px;}
+.fc-input-number-lg.fc-input-number-right .fc-input-number-handler {line-height: 20px;}
+.fc-input-number-lg input {font-style: 16px;}
+.fc-input-number-sm {height:26px;line-height: 26px;}
+.fc-input-number-sm.fc-input-number-right .fc-input-number-handler {line-height: 12px;}
+
+/*控制按钮位置*/
+.fc-input-number-right input {text-align: left;padding-left:20px;}
+.fc-input-number-right .fc-input-number-handler {height:50%;line-height:16px;}
+.fc-input-number-right .fc-input-number-handler-up {right:0;}
+.fc-input-number-right .fc-input-number-handler-down {top:initial;left:initial;right:0;bottom:0;border-right:none;border-left:1px solid #dcdfe6;border-top:1px solid #dcdfe6;}
